@@ -26,6 +26,9 @@ def chr_count(text):
     return chr_dict
 
 def sorted_list_of_chr_dict(chr_dict):
+    if type(chr_dict) != dict:
+        raise TypeError("Error: not a dictionary")
+
     def sort_on(items):
         return items["num"]
 
