@@ -3,30 +3,32 @@
 def word_count(text):
     return len(text.split())
 
-def chr_count(text):
-    chr_set = set()
-    for chr in text.lower():
-        chr_set.add(f'{chr}')
 
-    chr_dict = {}
-    for chr in chr_set:
-        chr_dict[chr] = 0
+def char_count(text):
+    char_set = set()
+    for char in text.lower():
+        char_set.add(f'{char}')
 
-    for chr in text.lower():
-        chr_dict[chr] += 1
+    char_count_dict = {}
+    for char in char_set:
+        char_count_dict[char] = 0
 
-    return chr_dict
+    for char in text.lower():
+        char_count_dict[char] += 1
 
-def sorted_list_of_chr_dict(chr_dict):
-    list_of_dict = []
-    for dict_key in chr_dict:
-        dict_value = chr_dict[dict_key]
-        list_of_dict.append({"char": f'{dict_key}', "num": dict_value})
+    return char_count_dict
+
+
+def sort_char_counts(char_count_dict):
+    sorted_list = []
+    for char in char_count_dict:
+        count = char_count_dict[char]
+        sorted_list.append({"char": char, "num": count})
 
     def sort_on(items):
         return items["num"]
 
-    list_of_dict.sort(reverse=True, key=sort_on)
+    sorted_list.sort(reverse=True, key=sort_on)
 
-    return list_of_dict
+    return sorted_list
 
