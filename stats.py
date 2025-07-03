@@ -7,6 +7,9 @@ def word_count(text):
     return len(text.split())
 
 def chr_count(text):
+    if type(text) != str:
+        raise TypeError("Error: not a string")
+
     text = text.lower()
 
     chr_set = set()
