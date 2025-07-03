@@ -1,11 +1,16 @@
 # main.py
 
+import sys
 from stats import word_count
 from stats import chr_count
 from stats import sorted_list_of_chr_dict
 
 def main():
-    path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path = sys.argv[1]
 
     try:
         text = get_text(path)
@@ -14,7 +19,6 @@ def main():
         sorted_dicts = sorted_list_of_chr_dict(chr_dict)
     except Exception as e:
         print(e)
-        raise
 
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {path}...")
